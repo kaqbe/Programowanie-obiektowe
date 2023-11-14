@@ -1,0 +1,338 @@
+//// main
+//WriteExample();
+//InputName();
+//View("janina", 12);
+//// koniec main
+
+//    for (int i = 0; i < 10; i++)
+//    {
+//        Console.WriteLine(i + ",");
+//    }
+
+
+//void WriteExample() {
+//    int wiek = 11;
+//    string name = "ala";
+//    Console.WriteLine("Imie: " + name + ", wiek: " + wiek);
+//    Console.WriteLine("Imie:{0}, Wiek {1},", name, wiek);
+//    Console.WriteLine($"Imie {name}, wiek {wiek}");
+
+//}
+
+//string InputName() {
+//    Console.WriteLine("Podaj imie");
+//    string name = Console.ReadLine();
+//    return name;
+//}
+double InputDouble()
+{
+    Console.WriteLine("");
+    double name = Convert.ToDouble(Console.ReadLine());
+    return name;
+}
+
+//void Wypisz(string name, double value)
+//{
+//    Console.WriteLine(name, value);
+//}
+
+//void View(string name, double value) {
+
+//    Console.WriteLine($"imie: {name}, wartosc: {value}");
+
+//}
+
+//void Zadanie1() {
+//    double a = InputDouble();
+//    double b = InputDouble();
+//    double c = InputDouble();
+
+//    double delta = Math.Pow(b, 2) - (4 *  a * c);
+//    double x1, x2;
+//    if (a == 0) Console.WriteLine("to nie jest woe, kw");
+//    else if (delta < 0) Console.WriteLine("brak roz. w zb liczb rz. ");
+//    else if (delta == 0) {
+//        x1 = (-b - Math.Sqrt(delta)) / (2 * a);
+//        Console.WriteLine("jedno rozwiazanie x1 " + x1);
+//    }
+//    else { 
+//    x1 = (-b - Math.Sqrt(delta)) / (2 * a);
+//    x2 = (-b + Math.Sqrt(delta)) / (2 * a);
+//    }
+//}
+
+void Zadanie1()
+{
+{
+    Console.WriteLine("Podaj współczynniki trójmianu kwadratowego ax^2 + bx + c");
+
+    Console.Write("Podaj a: ");
+    double a = InputDouble();
+
+    Console.Write("Podaj b: ");
+    double b = InputDouble();
+
+    Console.Write("Podaj c: ");
+    double c = InputDouble();
+
+    double delta = ObliczDelta(a, b, c);
+
+    if (delta > 0)
+    {
+        double[] pierwiastki = ObliczPierwiastki(a, b, delta);
+        Console.WriteLine("Trójmian kwadratowy ma dwa pierwiastki rzeczywiste: " + pierwiastki[0] + "i" + pierwiastki[1]);
+    }
+    else if (delta == 0)
+    {
+        double[] pierwiastki = ObliczPierwiastki(a, b, delta);
+        Console.WriteLine("Trójmian kwadratowy ma jeden pierwiastek rzeczywisty: " + pierwiastki[0]);
+    }
+    else
+    {
+        Console.WriteLine("Trójmian kwadratowy nie ma pierwiastków rzeczywistych.");
+    }
+}
+
+        static double ObliczDelta(double a, double b, double c)
+        {
+        return b * b - 4 * a * c;
+}
+
+    static double[] ObliczPierwiastki(double a, double b, double delta)
+    {
+        double pierwiastekDelta = Math.Sqrt(delta);
+        double x1 = (-b - pierwiastekDelta) / (2 * a);
+        double x2 = (-b + pierwiastekDelta) / (2 * a);
+        return new double[] { x1, x2 };
+    }
+}
+
+
+
+void zadanie2()
+{
+    bool prog = true;
+    while (prog == true)
+    {
+        Console.WriteLine("1. Dodawanie");
+        Console.WriteLine("2. Odejmowanie");
+        Console.WriteLine("3. Mnożenie");
+        Console.WriteLine("4. Dzielenie");
+        Console.WriteLine("5. Potega");
+        Console.WriteLine("6. pierwiastkowanie");
+        Console.WriteLine("7. Trygonometria");
+        Console.WriteLine("8. Wyjscie");
+        Console.WriteLine("TWOJ WYBOR");
+
+        int choise = (int)InputDouble();
+        switch (choise)
+        {
+            case 1: suma(); break;
+            case 2: roznica(); break;
+            case 3: iloczyn(); break;
+            case 4: iloraz(); break;
+            case 5: potegowanie(); break;
+            case 6: pierwiastek(); break;
+            case 7: trygonometria(); break;
+            case 8: wyjscie(); break;
+            default: Console.WriteLine("Bledne dane"); break;
+        }
+
+        void suma()
+        {
+            double a = InputDouble(), b = InputDouble();
+            double result = a + b;
+            Console.WriteLine("Suma " + a + " + " + b + " = " + result);
+        }
+
+        void roznica()
+        {
+            double a = InputDouble(), b = InputDouble();
+            double result = a - b;
+            Console.WriteLine("Różnica " + a + " - " + b + " = " + result);
+        }
+
+        void iloczyn()
+        {
+            double a = InputDouble(), b = InputDouble();
+            double result = a / b;
+            Console.WriteLine("Iloczyn " + a + " : " + b + " = " + result);
+        }
+
+        void iloraz()
+        {
+            double a = InputDouble(), b = InputDouble();
+            double result = a * b;
+            Console.WriteLine("Iloraz " + a + " * " + b + " = " + result);
+        }
+
+        void potegowanie()
+        {
+            double a = InputDouble(), b = InputDouble();
+            double result = Math.Pow(a, b);
+            Console.WriteLine("Potegowanie " + a + " ^ " + b + " = " + result);
+        }
+
+        void pierwiastek()
+        {
+            double a = InputDouble();
+            double result = Math.Sqrt(a);
+            Console.WriteLine("Pierwiastek " + a + " kwadratowy = " + result);
+        }
+
+        void trygonometria()
+        {
+            double a = InputDouble();
+            double sin = Math.Sin(a);
+            double cos = Math.Cos(a);
+            double tg = Math.Tan(a);
+            Console.WriteLine("Sin kata " + a + " = " + sin + ", Cos kata " + a + " = " + cos + ", Tg kata " + a + " = " + tg);
+        }
+
+        void wyjscie()
+        {
+            prog = false;
+        }
+
+    }
+}
+
+void zadanie3(){
+
+    double[] a = new double[10];
+
+    for (int i = 0; i < 10; i++)
+    {
+        a[i] = InputDouble();
+    }
+
+    foreach (double element in a)
+    {
+        Console.Write(element + " ");
+    }
+
+    for (int i = 9; i >= 0; i--)
+    {
+        Console.Write(a[i] + " ");
+    }
+
+    for (int i = 0;i < 10; i++)
+    {
+        if (a[i] % 2 == 0) {
+            Console.Write(a[i] + ", ");
+        }
+    }
+
+    for (int i = 0; i < 10; i++)
+    {
+        if (a[i] % 2 == 1)
+        {
+            Console.Write(a[i] + ", ");
+        }
+    }
+}
+
+void zadanie4()
+{
+    double[] a = new double[10];
+    double suma = 0;
+    double iloczyn = 1;
+    double maks = double.MinValue;
+    double min = double.MaxValue;
+
+    for (int i = 0; i < 10; i++)
+    {
+        a[i] = InputDouble();
+    }
+
+    for (int i = 0; i < 10; i++)
+    {
+        suma += a[i];
+        iloczyn *= a[i];
+
+        if (a[i] > maks)
+        {
+            maks = a[i];
+        }
+
+        if (a[i] < min)
+        {
+            min = a[i];
+        }
+    }
+
+    Console.WriteLine("Suma: " + suma);
+    Console.WriteLine("Iloczyn: " + iloczyn);
+    Console.WriteLine("Maksimum: " + maks);
+    Console.WriteLine("Minimum: " + min);
+}
+
+
+void zadanie5()
+{
+    double[] a = new double[21];
+
+    for (int i = 0; i <= 20; i++)
+    {
+        if (i == 0 || i == 2 || i == 6 || i == 9 || i == 15 || i == 19)
+        {
+            continue;
+        }
+        else
+        {
+            a[20 - i] = i;
+        }
+    }
+
+    // Utwórz nową tablicę, eliminując puste wartości (0)
+    double[] newArray = a.Where(val => val != 0).ToArray();
+
+    foreach (double element in newArray)
+    {
+        Console.Write(element + " ");
+    }
+}
+
+void zadanie6() {
+
+    while (true)
+    {
+        double a = Convert.ToInt32(Console.ReadLine());
+        if (a<0) {
+            break;
+        }
+    }
+}
+
+void zadanie7()
+{
+    Console.WriteLine("Podaj ilość elementów tablicy");
+    int il = Convert.ToInt32(Console.ReadLine());
+    double[] tab = new double[il];
+    Console.WriteLine("Podaj elementy tablicy");
+    for (int i = 0; i < il; i++)
+    {
+        tab[i] = InputDouble();
+    }
+
+    for (int i = 0; i < il - 1; i++)
+    {
+        for (int j = 0; j < il - 1 - i; j++)
+        {
+            if (tab[j] > tab[j + 1])
+            {
+                double temp = tab[j];
+                tab[j] = tab[j + 1];
+                tab[j + 1] = temp;
+            }
+        }
+    }
+
+    Console.WriteLine("Posortowana tablica:");
+    foreach (double element in tab)
+    {
+        Console.WriteLine(element);
+    }
+}
+
+zadanie7();
